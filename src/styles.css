@@ -1,4 +1,27 @@
 .App {
   font-family: sans-serif;
   text-align: center;
+  display: grid;
+  
+    grid-template-columns: 50px 50px  auto 100px 100px ;
+    grid-template-rows: [row1-start] 50px [row1-end] 700px [third-line] 50px [last-line];
+    margin: 0%;
+    padding: 0%;
+}
+.FixedSide{
+
+  border: 2px solid black;
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 4;
+
+  
+}
+.postDiv{
+
+  border: 2px solid black;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1rem;
 }
