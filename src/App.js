@@ -1,15 +1,16 @@
 import "./styles.css";
-import { Route, Routes, NavLink } from "react-router-dom";
+import { Route, Routes, NavLink, useNavigate } from "react-router-dom";
 import { HomePg } from "./pages/homePg";
 import { SignUp } from "./pages/signup";
 import { useContext , useState , useEffect} from "react";
 import { MediaContext } from "./contextProvider";
 import { LoginPg } from "./pages/loginPg";
 import { Users } from "./backend/users";
-
+import { UserPage } from "./pages/userPg";
 export default function App() {
   const { GetPost, SetPost , userStored ,userArrayStored , newPost , setNewPost } = useContext(MediaContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate()
 
   console.log(userStored)
   useEffect(() => {
@@ -31,7 +32,7 @@ const AddNewPostBtn =()=>{
   return (
     <div className="App">
       <div className="FixedSide">
-        <span className="userSp" >
+        <span onClick={()=>navigate(`/user/${userStored.username}`)} className="userSp" >
 
 
           <div className="circleDv">
@@ -52,11 +53,11 @@ const AddNewPostBtn =()=>{
           </div>
         </div>
       )}
-        <hr></hr>
+        
         <div>
           <p>Suggested users</p>
           {
-userArrayStored.map((e)=><span style={{display: userStored.username === e.username ? "none" :"flex"}} className="userSp"><div className="circleDv">
+userArrayStored.map((e)=><span onClick={()=>navigate(`/user/${e.username}`)} style={{display: userStored.username === e.username ? "none" :"flex"}} className="userSp"><div className="circleDv">
           <img src={e.profileImg}></img>
         </div>
         <p>{e.username}</p></span>)
@@ -66,12 +67,12 @@ userArrayStored.map((e)=><span style={{display: userStored.username === e.userna
       
       </div>
       <nav>
-        <NavLink to="/signup">signup</NavLink>
-        <NavLink to={"/login"}>Login</NavLink>
+        
         <Routes>
           <Route path="/" element={<HomePg />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LoginPg/>}/>
+          <Route path="/user/:userId" element={<UserPage/>}></Route>
         </Routes>
       </nav>
     </div>

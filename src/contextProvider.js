@@ -53,7 +53,12 @@ export const ContextProvider = ({ children }) => {
 const [newPost , setNewPost] = useState({
     id:uuid(),
     username:userStored.username,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    }
   })
 
 

@@ -1,8 +1,13 @@
 import { useContext } from "react";
 import { MediaContext } from "../contextProvider";
 
+import { useNavigate } from "react-router-dom";
+import { PostCard } from "../postCard";
+
+
 export const HomePg = () => {
-  const { GetPost, SetPost  } = useContext(MediaContext);
+  const { GetPost, SetPost  ,userStored , userArrayStored } = useContext(MediaContext);
+  const navigate = useNavigate()
 
   console.log(GetPost)
   return (
@@ -11,14 +16,9 @@ export const HomePg = () => {
     
       <div>
           
-        {GetPost.map((e) => (
-          <div className="postDiv" key={e.id}>
-            
-            <h3>{e.username}</h3>
-            <p>{e.text}</p>
-            <p>{new Date(e.createdAt).toLocaleString()}</p>
-          </div>
-        ))}
+      {GetPost.map((e) => (<PostCard {...e}/>)
+        
+)}
       </div>
     </div>
   );
