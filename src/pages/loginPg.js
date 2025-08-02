@@ -11,6 +11,7 @@ export const LoginPg = ()=>{
         const FindUser = usersArr.find((e)=>e.username === getName && e.password === getPass)
         if(FindUser){
             localStorage.setItem("user" , JSON.stringify(FindUser))
+            
         }else{
 
             alert("Incorrect")

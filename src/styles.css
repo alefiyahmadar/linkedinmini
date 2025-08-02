@@ -3,7 +3,7 @@
   text-align: center;
   display: grid;
   
-    grid-template-columns: 50px 50px  auto 100px 100px ;
+    grid-template-columns: 50px 50px  auto 150px 100px ;
     grid-template-rows: [row1-start] 50px [row1-end] 700px [third-line] 50px [last-line];
     margin: 0%;
     padding: 0%;
@@ -18,10 +18,151 @@
 
   
 }
+
+.circleDv{
+ width: 50px; /* Set your desired width */
+    height: 50px; /* Set your desired height */
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+.circleDv img{
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.userSp{
+
+  display: flex;
+  padding: 1rem;
+}
+.userSp p{
+
+  font-size: large;
+  font-weight: bold;
+  padding: 0.3rem;
+  text-wrap: wrap;
+}
 .postDiv{
 
   border: 2px solid black;
-  width: 60%;
+  width: 100%;
   margin: auto;
   margin-bottom: 1rem;
 }
+.homeCnt{
+
+  
+  display: grid;
+   grid-template-columns: 100px  500px 100px  ;
+grid-template-rows: [row1-start] 50px [row1-end] 700px [third-line] 50px [last-line];
+    margin: auto;
+}
+.homeCnt div{
+
+  grid-column-start: 2;
+  grid-row-start: 2;
+  
+}
+
+
+/* App container */
+.app-container {
+  position: relative;
+  height: 100vh;
+  padding: 2rem;
+}
+
+/* Add post button */
+.add-post-btn {
+  padding: 10px 20px;
+  background-color: #4b7bec;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal content */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50%;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  transform: scale(0.9);
+  animation: slideIn 0.3s ease forwards;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+
+}
+.modal-content textarea{
+
+  padding: 2rem;
+  font-size: 1rem;
+  
+}
+.postBtn{
+
+  width: 40%;
+  align-self: center;
+  margin-top: 2rem;
+   background-color: #4b7bec;
+   border: none;
+   color: white;
+   padding: 0.5rem;
+   font-size: large;
+   letter-spacing: 0.2rem;
+   border-radius: 0.2rem;
+  
+  
+
+  
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes slideIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
