@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { MediaContext } from "../contextProvider"
 import { PostCard } from "../postCard"
@@ -6,16 +6,26 @@ import { PostCard } from "../postCard"
 
 export const UserPage =()=>{
 
-    const {userArrayStored , GetPost} = useContext(MediaContext)
+    const {userArrayStored , GetPost , userStored} = useContext(MediaContext)
 
 const {userId} = useParams()
 const navigate = useNavigate()
+
+const [newBio , setNewBio] = useState("")
+const [isBioOpen , setBioOpen] = useState(false)
 
 
 
 const FindUser = userArrayStored.find((e)=>e.username === userId)
 
 console.log(FindUser)
+
+const EditBioHandler =()=>{
+    setBioOpen(false)
+alert("Site In Progress")
+
+
+}
 
     return(<div >
 
@@ -33,6 +43,22 @@ console.log(FindUser)
 
                 <h2>{FindUser.username}</h2>
             <h3>{FindUser.bio}</h3>
+            <button onClick={()=>setBioOpen(true)}>Edit Bio</button>
+        { 
+         
+         isBioOpen && (
+            <div className="modal-overlay">
+          <div className="modal-content">
+            <button className="close-btn" onClick={() => setBioOpen(false)}>
+              &times;
+            </button>
+            <h2>Write Your New Bio</h2>
+            <textarea onChange={(e)=>setNewBio(e.target.value)}/>
+            <button className="postBtn" onClick={EditBioHandler} >Edit</button>
+          </div>
+        </div>
+         )
+}
 
             </div>
 

@@ -17,6 +17,7 @@ export const ContextProvider = ({ children }) => {
   });
   const [usersArray, setUsersArray] = useState(Users);
   const [user , setUser] = useState()
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [defaultUser, setDefaultUser] = useState({
     id:uuid(),
@@ -66,7 +67,7 @@ const [newPost , setNewPost] = useState({
 
 
   return (
-    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored , newPost , setNewPost }}>
+    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored , newPost , setNewPost , isLoggedIn , setIsLoggedIn}}>
       {children}
     </MediaContext.Provider>
   );

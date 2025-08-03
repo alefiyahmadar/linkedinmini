@@ -8,7 +8,7 @@ import { LoginPg } from "./pages/loginPg";
 import { Users } from "./backend/users";
 import { UserPage } from "./pages/userPg";
 export default function App() {
-  const { GetPost, SetPost , userStored ,userArrayStored , newPost , setNewPost } = useContext(MediaContext);
+  const { GetPost, SetPost , userStored ,userArrayStored , newPost , setNewPost  ,  isLoggedIn , setIsLoggedIn} = useContext(MediaContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate()
 
@@ -27,11 +27,17 @@ const AddNewPostBtn =()=>{
   SetPost(updatePostArr)
   setIsModalOpen(false)
 }
+const LogOutHandler =()=>{
+
+    localStorage.removeItem("user")
+    window.location.reload()
+
+}
 
 
   return (
     <div className="App">
-      <div className="FixedSide">
+      <div className="FixedSide" style={{display: isLoggedIn ? "flex" :"none" }}>
         <span onClick={()=>navigate(`/user/${userStored.username}`)} className="userSp" >
 
 
@@ -40,7 +46,7 @@ const AddNewPostBtn =()=>{
         </div>
         <p>{userStored.username}</p>
         </span>
-        <button className="add-post-btn" onClick={() => setIsModalOpen(true)}>  + Add Post</button>
+        
          {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
@@ -66,13 +72,42 @@ userArrayStored.map((e)=><span onClick={()=>navigate(`/user/${e.username}`)} sty
         
       
       </div>
-      <nav>
+      <div className="leftBar" style={{display: isLoggedIn ? "block" :"none" }}>
+        <h2>ChaturChat</h2>
+        <h4>All the chaturs chat here</h4>
+
+        <span>
+          <NavLink to={"/"}>
+            <img width="30" height="30" src="https://img.icons8.com/material-rounded/24/home.png" alt="home"/>
+          <label>home</label>
+
+          </NavLink>
+
+          
+
+          <NavLink onClick={() => setIsModalOpen(true)}>
+
+             <img width="30" height="30" src="https://img.icons8.com/ios/30/plus--v1.png" alt="plus--v1"/>
+          <label>Create</label>
+          </NavLink>
+<NavLink onClick={LogOutHandler}>
+
+          <img width="30" height="30" src="https://img.icons8.com/ios/30/exit.png" alt="exit"/>
+          <label>Logout</label>
+
+</NavLink>
+         
+
+          
+        </span>
+      </div>
+      <nav className="nav">
         
         <Routes>
-          <Route path="/" element={<HomePg />} />
+          <Route path="/" element={ isLoggedIn ?  <HomePg /> :<LoginPg/>} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LoginPg/>}/>
-          <Route path="/user/:userId" element={<UserPage/>}></Route>
+          <Route path="/login" element={  <LoginPg/>}/>
+          <Route path="/user/:userId" element={ isLoggedIn ? <UserPage/> : <LoginPg/>}></Route>
         </Routes>
       </nav>
     </div>

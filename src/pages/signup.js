@@ -1,11 +1,11 @@
 import { useContext  , useEffect , useState} from "react";
 import { MediaContext } from "../contextProvider";
 import { v4 as uuid } from "uuid";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , NavLink } from "react-router-dom";
 
 export const SignUp = () => {
 
-  const {NewUser , setNewUser , usersArray , setUsersArray } =useContext(MediaContext)
+  const {NewUser , setNewUser , usersArray , setUsersArray ,  isLoggedIn , setIsLoggedIn } =useContext(MediaContext)
 
   const navigate =useNavigate()
   
@@ -19,6 +19,7 @@ const SignUpHandler =()=>{
   
   setUsersArray(UpdatedArr)
   
+  setIsLoggedIn(true)
 
 navigate("/")
   
@@ -43,6 +44,7 @@ useEffect(() => {
         <input placeholder="email" onChange={(e)=>setNewUser({...NewUser , email:e.target.value})} />
         <input placeholder="password" onChange={(e)=>setNewUser({...NewUser , password:e.target.value})} />
         <button onClick={SignUpHandler}>Signup</button>
+         <p>Already have an account? <NavLink to={"/login"}>Login</NavLink></p>
       </div>
     </div>
   );
