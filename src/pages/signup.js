@@ -19,6 +19,7 @@ const SignUpHandler =()=>{
   
   setUsersArray(UpdatedArr)
   
+  
   setIsLoggedIn(true)
 
 navigate("/")

@@ -7,7 +7,7 @@ export const LoginPg = ()=>{
     const [getName , setName] = useState()
     const [getPass , setPass] = useState()
 
-    const { isLoggedIn , setIsLoggedIn , defaultUser} =useContext(MediaContext)
+    const { isLoggedIn , setIsLoggedIn , defaultUser } =useContext(MediaContext)
 
     const navigate =useNavigate()
 
@@ -26,6 +26,7 @@ export const LoginPg = ()=>{
         if(FindUser){
             localStorage.setItem("user" , JSON.stringify(FindUser))
             setIsLoggedIn(true)
+             
             navigate("/")
             
         }else{

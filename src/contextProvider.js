@@ -38,10 +38,14 @@ export const ContextProvider = ({ children }) => {
     profileImg:"https://i.pinimg.com/736x/a8/57/00/a85700f3c614f6313750b9d8196c08f5.jpg"
 
   })
+
+  
   
 
   const userStored = JSON.parse(localStorage.getItem("user"))
   const userArrayStored = JSON.parse(localStorage.getItem("usersArray"));
+
+  
 
 
   userStored ? localStorage.setItem("user" ,JSON.stringify(userStored)) : localStorage.setItem("user" , JSON.stringify(defaultUser))
@@ -51,23 +55,18 @@ export const ContextProvider = ({ children }) => {
     ? localStorage.setItem("usersArray", JSON.stringify(userArrayStored))
     : localStorage.setItem("usersArray", JSON.stringify(usersArray));
 
-const [newPost , setNewPost] = useState({
-    id:uuid(),
-    username:userStored.username,
-    createdAt: new Date().toISOString(),
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: [],
-    }
-  })
+    
+
+    
+
+
 
 
 
 
 
   return (
-    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored , newPost , setNewPost , isLoggedIn , setIsLoggedIn}}>
+    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored  , isLoggedIn, setIsLoggedIn }}>
       {children}
     </MediaContext.Provider>
   );

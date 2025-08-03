@@ -1,5 +1,6 @@
 import "./styles.css";
 import { Route, Routes, NavLink, useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import { HomePg } from "./pages/homePg";
 import { SignUp } from "./pages/signup";
 import { useContext , useState , useEffect} from "react";
@@ -8,8 +9,9 @@ import { LoginPg } from "./pages/loginPg";
 import { Users } from "./backend/users";
 import { UserPage } from "./pages/userPg";
 export default function App() {
-  const { GetPost, SetPost , userStored ,userArrayStored , newPost , setNewPost  ,  isLoggedIn , setIsLoggedIn} = useContext(MediaContext);
+  const { GetPost, SetPost , userStored ,userArrayStored   ,  isLoggedIn , setIsLoggedIn} = useContext(MediaContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [getText , setText] = useState("")
   const navigate = useNavigate()
 
   console.log(userStored)
@@ -18,6 +20,20 @@ export default function App() {
   }, [isModalOpen]);
 
 const AddNewPostBtn =()=>{
+
+  const user = JSON.parse(localStorage.getItem("user")) || { username: "Guest" };
+
+  const newPost = {
+    id: uuid(),
+    username: user.username,
+    createdAt: new Date().toISOString(),
+    text:getText,
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+  };
 
   const updatePostArr = [...GetPost , newPost]
 console.log(newPost)
@@ -56,7 +72,7 @@ const LogOutHandler =()=>{
               &times;
             </button>
             <h2>Create Your Post</h2>
-            <textarea onChange={(e)=>setNewPost({...newPost , text:e.target.value})}/>
+            <textarea onChange={(e)=>setText(e.target.value)}/>
             <button className="postBtn" onClick={AddNewPostBtn} >Post</button>
           </div>
         </div>
