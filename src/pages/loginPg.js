@@ -34,8 +34,9 @@ export const LoginPg = ()=>{
         }
     }
 
-    return(<div>
-        <p>LoginPg</p>
+    return(<div className="signUpCont">
+        <h5>ChaturChat</h5>
+      <h4>Login</h4>
         <input placeholder="username" onChange={(e)=>setName(e.target.value)} />
         <input placeholder="password" onChange={(e)=>setPass(e.target.value)} />
         <button onClick={LoginHandler}>Login</button>

@@ -36,8 +36,9 @@ useEffect(() => {
 
   console.log(NewUser)
   return (
-    <div>
-      <p>Signup</p>
+    <div className="signUpCont">
+      <h5>ChaturChat</h5>
+      <h4>SignUp</h4>
 
       <div>
         <input placeholder="username" onChange={(e)=>setNewUser({...NewUser , username:e.target.value})} />

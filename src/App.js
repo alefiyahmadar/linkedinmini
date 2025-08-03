@@ -38,7 +38,7 @@ const LogOutHandler =()=>{
   return (
     <div className="App">
       <div className="FixedSide" style={{display: isLoggedIn ? "flex" :"none" }}>
-        <span onClick={()=>navigate(`/user/${userStored.username}`)} className="userSp" >
+        <span onClick={()=>navigate(`/user/${userStored.username}`)} className="userSp" style={{display:window.innerWidth > 450 ? "block" :"none"}}  >
 
 
           <div className="circleDv">
@@ -60,10 +60,10 @@ const LogOutHandler =()=>{
         </div>
       )}
         
-        <div>
+        <div style={{display:window.innerWidth > 450 ? "block" :"none"}}>
           <p>Suggested users</p>
           {
-userArrayStored.map((e)=><span onClick={()=>navigate(`/user/${e.username}`)} style={{display: userStored.username === e.username ? "none" :"flex"}} className="userSp"><div className="circleDv">
+userArrayStored.map((e)=><span onClick={()=>navigate(`/user/${e.username}`)} style={{display: userStored.username === e.username  ? "none" :"flex"}} className="userSp"><div className="circleDv">
           <img src={e.profileImg}></img>
         </div>
         <p>{e.username}</p></span>)
