@@ -20,7 +20,9 @@ export default function App() {
 const AddNewPostBtn =()=>{
 
   const updatePostArr = [...GetPost , newPost]
-
+console.log(newPost)
+console.log(userStored)
+   
   console.log(updatePostArr)
 
   localStorage.setItem("postArray" , JSON.stringify(updatePostArr))
