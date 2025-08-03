@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { MediaContext } from "../contextProvider"
 import { PostCard } from "../postCard"
 
@@ -9,6 +9,7 @@ export const UserPage =()=>{
     const {userArrayStored , GetPost} = useContext(MediaContext)
 
 const {userId} = useParams()
+const navigate = useNavigate()
 
 
 
@@ -19,7 +20,7 @@ console.log(FindUser)
     return(<div >
 
         <div className="bio"> 
-            <div className="bioImg"> <span onClick={()=>navigate(`/user/${e.username}`)} className="userSp" >
+            <div className="bioImg"> <span onClick={()=>navigate(`/user/${FindUser.username}`)} className="userSp" >
     
     
               <div className="circleDvBio">

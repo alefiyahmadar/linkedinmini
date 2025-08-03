@@ -1,10 +1,13 @@
 import { useContext } from "react"
 import { MediaContext } from "./contextProvider"
 import { formatDistanceToNow } from 'date-fns';
+import { useNavigate } from "react-router";
 
 export const PostCard =(e)=>{
 
 const {userArrayStored} = useContext(MediaContext)
+
+const navigate = useNavigate()
 
 
         const getImg = userArrayStored.find((u)=>u.username ===e.username)
