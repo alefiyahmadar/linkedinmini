@@ -5,9 +5,11 @@ import { useNavigate } from "react-router";
 
 export const PostCard =(e)=>{
 
-const {userArrayStored} = useContext(MediaContext)
+const {userArrayStored , BookMark , setBookmark , BookMarkHandler} = useContext(MediaContext)
 
 const navigate = useNavigate()
+
+
 
 
         const getImg = userArrayStored.find((u)=>u.username ===e.username)
@@ -30,7 +32,7 @@ const navigate = useNavigate()
 
                 <span className="postAddon">
                 <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/737373/like.png" alt="like"/>
-                <img width="30" height="30" src="https://img.icons8.com/material-outlined/24/1A1A1A/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/></span>
+                <img onClick={()=>BookMarkHandler(e)} width="30" height="30" src="https://img.icons8.com/material-outlined/24/1A1A1A/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/></span>
                 <h5>{formatDistanceToNow(new Date(e.createdAt))}</h5>
 
               </div>)

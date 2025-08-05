@@ -114,6 +114,12 @@ userArrayStored.map((e)=><span onClick={()=>navigate(`/user/${e.username}`)} sty
           <label>Logout</label>
 
 </NavLink>
+<NavLink to={`/user/${userStored.username}`}>
+<div className="circleDv" style={{display:window.innerWidth > 450 ?"none" :"block"}}>
+  <img style={{ width:"30px" , height:"30px" }} src={userStored.profileImg}></img>
+</div>
+
+</NavLink>
          
 
           

@@ -27,6 +27,10 @@ export const ContextProvider = ({ children }) => {
     bio:"Finance Manager",
     profileImg:
       "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg",
+       followers: [],
+    following: [],
+    bookMark: [],
+      
 
   })
   
@@ -35,9 +39,14 @@ export const ContextProvider = ({ children }) => {
     username:"",
     email:"",
     password:"",
-    profileImg:"https://i.pinimg.com/736x/a8/57/00/a85700f3c614f6313750b9d8196c08f5.jpg"
+    profileImg:"https://i.pinimg.com/736x/a8/57/00/a85700f3c614f6313750b9d8196c08f5.jpg",
+     followers: [],
+    following: [],
+    bookMark: [],
 
   })
+
+  const [BookMark , setBookmark] = useState([])
 
   
   
@@ -56,9 +65,31 @@ export const ContextProvider = ({ children }) => {
     : localStorage.setItem("usersArray", JSON.stringify(usersArray));
 
     
+const BookMarkHandler = (post) => {
+    // setUsersArray((prevUser) =>
+    //   prevUser.map((user) => {
+    //     if (user.username === userStored.username) {
+    //       const isBookmarked = user.bookMark.some(
+    //         (bookmark) => bookmark.id === post.id
+    //       );
+    //       const newBookmarkArray = isBookmarked
+    //         ? user.bookMark.filter((bookmark) => bookmark.id !== post.id)
+    //         : [...user.bookMark, post];
+    //       return { ...user, bookMark: newBookmarkArray };
+    //     }
+        
+    //     return user;
+    //   })
+    // );
+
+   
+
+
+  };
+
 
     
-
+console.log(usersArray)
 
 
 
@@ -66,7 +97,7 @@ export const ContextProvider = ({ children }) => {
 
 
   return (
-    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored  , isLoggedIn, setIsLoggedIn }}>
+    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored  , isLoggedIn, setIsLoggedIn , BookMark , setBookmark , BookMarkHandler }}>
       {children}
     </MediaContext.Provider>
   );

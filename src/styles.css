@@ -396,7 +396,7 @@ flex-direction: column;
 
    display: grid;
   
-    grid-template-columns: 50px   auto 50px  ;
+    grid-template-columns: 10px   auto 50px  ;
     grid-template-rows: [row1-start] 50px [row1-end] 700px [third-line] 50px [last-line];
 gap: 0px;
 
