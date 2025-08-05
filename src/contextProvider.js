@@ -4,6 +4,7 @@ import { createContext, useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { Posts } from "./backend/post";
 import { Users } from "./backend/users";
+import { tr } from "date-fns/locale";
 
 export const MediaContext = createContext();
 
@@ -66,30 +67,32 @@ export const ContextProvider = ({ children }) => {
 
     
 const BookMarkHandler = (post) => {
-    // setUsersArray((prevUser) =>
-    //   prevUser.map((user) => {
-    //     if (user.username === userStored.username) {
-    //       const isBookmarked = user.bookMark.some(
-    //         (bookmark) => bookmark.id === post.id
-    //       );
-    //       const newBookmarkArray = isBookmarked
-    //         ? user.bookMark.filter((bookmark) => bookmark.id !== post.id)
-    //         : [...user.bookMark, post];
-    //       return { ...user, bookMark: newBookmarkArray };
-    //     }
-        
-    //     return user;
-    //   })
-    // );
+     
+ setBookmark((prevBookMark)=>{
+  const isBookMarked = prevBookMark.some((e)=>e.id === post.id)
 
-   
+  if(isBookMarked){
+    return prevBookMark.filter((e)=>e.id !== post.id)
+    
+  }else{
+
+    return [...prevBookMark , post]
+  }
+
+  
+  
+
+ })
+
+ 
 
 
   };
+console.log(usersArray)
 
 
     
-console.log(usersArray)
+console.log(userStored)
 
 
 
