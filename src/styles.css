@@ -25,7 +25,7 @@ border-top: 1px solid #F5F5F5;
 
    display: grid;
   
-    grid-template-columns: 100px 100px  auto 100px 100px ;
+    grid-template-columns: 100px 100px  auto 150px 150px ;
     grid-template-rows: [row1-start] 50px [row1-end] auto [third-line] 50px [last-line];
 }
 
@@ -39,6 +39,10 @@ display: flex;
 flex-direction: column;
 width: 100%;
 margin-top: 1rem;
+  
+}
+.follow{
+
   
 }
 .nav{
