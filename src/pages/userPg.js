@@ -6,7 +6,7 @@ import { PostCard } from "../postCard"
 
 export const UserPage =()=>{
 
-    const {userArrayStored , GetPost , userStored} = useContext(MediaContext)
+    const {userArrayStored , GetPost , userStored , isBookMark , setIsBookmark} = useContext(MediaContext)
 
 const {userId} = useParams()
 const navigate = useNavigate()
@@ -29,7 +29,7 @@ alert("Site In Progress")
 
     return(<div >
 
-        <div className="bio"> 
+        <div className="bio" style={{borderBottom:FindUser.username === userStored.username ? "none" :"1px solid #F5F5F5"}}> 
             <div className="bioImg"> <span onClick={()=>navigate(`/user/${FindUser.username}`)} className="userSp" >
     
     
@@ -43,7 +43,7 @@ alert("Site In Progress")
 
                 <h2>{FindUser.username}</h2>
             <h3>{FindUser.bio}</h3>
-            <button onClick={()=>setBioOpen(true)}>Edit Bio</button>
+            <button style={{display:FindUser.username === userStored.username ? "flex" :"none"}} onClick={()=>setBioOpen(true)}>Edit Bio</button>
         { 
          
          isBioOpen && (
@@ -61,15 +61,24 @@ alert("Site In Progress")
 }
 
             </div>
+            
 
         
         
 </div>
+<div style={{display:FindUser.username === userStored.username ? "flex" :"none"}} className="userPostToggle" >
+              <div onClick={()=>setIsBookmark(false)} className="post" style={{borderTop:isBookMark ? "none" :"1px solid black"}}>
+                <p>post</p>
+              </div>
+              <div onClick={()=>setIsBookmark(true)} className="saved" style={{borderTop:isBookMark ? "1px solid black" :"none"}}>
+                <p>saved</p>
+              </div>
+            </div>
 
 
      
         {
-            GetPost.map((e)=>e.username === userId ? (<PostCard {...e}/>) :"")
+          isBookMark ? userStored.bookMark.map((e)=>< PostCard {...e} />) :  GetPost.map((e)=>e.username === userId ? (<PostCard {...e}/>) :"")
 
         }
     </div>)

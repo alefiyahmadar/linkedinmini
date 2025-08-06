@@ -8,6 +8,14 @@
     margin: 0%;
     padding: 0%;
 }
+.userPostToggle{
+
+display: flex;
+justify-content: space-evenly;
+padding: 0;
+margin: 0;
+border-top: 1px solid #F5F5F5;
+}
 
 @media only screen and (min-width: 450px){
 
@@ -260,7 +268,7 @@ padding-right: 0.5rem;
   position: sticky;
   top: 0;
   background-color: white;
-  border: 1px solid #F5F5F5;
+
   border-top: none;
   border-left: none;
   border-right: none;
@@ -382,7 +390,12 @@ flex-direction: column;
   margin-top: 1rem;
   
 }
+.userPostToggle p{
 
+  font-size: 15px;
+  display: flex;
+  justify-content: space-around;
+}
 
 
 
@@ -520,7 +533,7 @@ background-color: white;
 .bio{
 
   display: flex;
-  border-bottom: 1px solid #F5F5F5;
+
   margin-bottom: 1rem;
 }
 
@@ -681,6 +694,9 @@ flex-direction: column;
 }
 .signUpCont p{
 
+  font-size: 10px;
+}
+.userPostToggle p{
   font-size: 10px;
 }
 

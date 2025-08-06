@@ -13,7 +13,13 @@ export const LoginPg = ()=>{
 
     const loginGuestHandler =()=>{
 
-        localStorage.setItem("user" , JSON.stringify(defaultUser))
+
+        
+        const usersArr = JSON.parse(localStorage.getItem("usersArray"))
+        console.log(usersArr)
+        const FindUser = usersArr.find((e)=>e.username === "adarshbalika")
+
+        localStorage.setItem("user" , JSON.stringify(FindUser))
         setIsLoggedIn(true)
         navigate("/")
     }

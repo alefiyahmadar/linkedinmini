@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 export const PostCard =(e)=>{
 
-const {userArrayStored , BookMark , setBookmark , BookMarkHandler} = useContext(MediaContext)
+const {userArrayStored , BookMark , setBookmark , BookMarkHandler , userStored} = useContext(MediaContext)
 
 const navigate = useNavigate()
 
@@ -13,6 +13,7 @@ const navigate = useNavigate()
 
 
         const getImg = userArrayStored.find((u)=>u.username ===e.username)
+        console.log(e , userStored)
             
             return(
               <div className="postDiv" key={e.id}>
@@ -32,7 +33,12 @@ const navigate = useNavigate()
 
                 <span className="postAddon">
                 <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/737373/like.png" alt="like"/>
-                <img onClick={()=>BookMarkHandler(e)} width="30" height="30" src="https://img.icons8.com/material-outlined/24/1A1A1A/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/></span>
+
+                <img style={{display:userStored.bookMark.find((u)=>u.id === e.id) ? "none" :"inline"}} onClick={()=>BookMarkHandler(e)} width="30" height="30" src="https://img.icons8.com/material-outlined/24/1A1A1A/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
+
+                <img style={{display:userStored.bookMark.find((u)=>u.id === e.id) ? "inline" :"none"}} onClick={()=>BookMarkHandler(e)}  width="30" height="30" src="https://img.icons8.com/material-sharp/30/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
+                
+                </span>
                 <h5>{formatDistanceToNow(new Date(e.createdAt))}</h5>
 
               </div>)
