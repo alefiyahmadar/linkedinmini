@@ -6,7 +6,7 @@ import { PostCard } from "../postCard"
 
 export const UserPage =()=>{
 
-    const {userArrayStored , GetPost , userStored , isBookMark , setIsBookmark} = useContext(MediaContext)
+    const {userArrayStored , GetPost , userStored , isBookMark , setIsBookmark , FollowHandler} = useContext(MediaContext)
 
 const {userId} = useParams()
 const navigate = useNavigate()
@@ -28,8 +28,9 @@ alert("Site In Progress")
 }
 
     return(<div >
+      <div style={{borderBottom:FindUser.username === userStored.username ? "none" :"1px solid #F5F5F5" , marginBottom:"1rem"}}>
 
-        <div className="bio" style={{borderBottom:FindUser.username === userStored.username ? "none" :"1px solid #F5F5F5"}}> 
+        <div className="bio" > 
             <div className="bioImg"> <span onClick={()=>navigate(`/user/${FindUser.username}`)} className="userSp" >
     
     
@@ -43,6 +44,7 @@ alert("Site In Progress")
 
                 <h2>{FindUser.username}</h2>
             <h3>{FindUser.bio}</h3>
+            
             <button style={{display:FindUser.username === userStored.username ? "flex" :"none"}} onClick={()=>setBioOpen(true)}>Edit Bio</button>
         { 
          
@@ -66,6 +68,9 @@ alert("Site In Progress")
         
         
 </div>
+<button className="followBtn" onClick={()=>FollowHandler(FindUser)} style={{display:FindUser.username === userStored.username ? "none" :"flex"}}>{userStored.followers.find((u)=>u.username === FindUser.username) ? "Unfollow" :"Follow"}</button>
+</div>
+
 <div style={{display:FindUser.username === userStored.username ? "flex" :"none"}} className="userPostToggle" >
               <div onClick={()=>setIsBookmark(false)} className="post" style={{borderTop:isBookMark ? "none" :"1px solid black"}}>
                 <p>post</p>

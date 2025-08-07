@@ -13,7 +13,7 @@ const navigate = useNavigate()
 
 
         const getImg = userArrayStored.find((u)=>u.username ===e.username)
-        console.log(e , userStored)
+      
             
             return(
               <div className="postDiv" key={e.id}>

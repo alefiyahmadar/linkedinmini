@@ -17,6 +17,7 @@ margin: 0;
 border-top: 1px solid #F5F5F5;
 }
 
+
 @media only screen and (min-width: 450px){
 
 .App{
@@ -41,9 +42,40 @@ width: 100%;
 margin-top: 1rem;
   
 }
-.follow{
 
+.followSp{
+
+  display: flex;
+  justify-content: space-between;
+}
+.followSp p{
+
+  padding: 0.5rem;
+}
+.follow{
+font-size: 15px;
+font-weight: 600;
+background-color: white;
+border: 1px solid yellow;
+color: #89CFF0;
+width: 30%;
+margin-left: auto;
   
+}
+.followBtn{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+  padding: 0.5rem;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background-color: #89CFF0;
+  border: none;
+  margin-bottom: 1rem;
+  letter-spacing: 0.01rem;
+
 }
 .nav{
 
@@ -424,6 +456,18 @@ gap: 0px;
   
   
 }
+.followBtn{
+display: flex;
+justify-content: center;
+padding: 0.3rem;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #89CFF0;
+  color: white;
+  border: none;
+  margin-bottom: 0.5rem;
+}
 .nav{
 
   
@@ -455,7 +499,6 @@ gap: 0px;
 display: flex;
 margin: auto;
 padding: 1rem;
-margin-left: 1rem;
 }
 .userSp p{
 

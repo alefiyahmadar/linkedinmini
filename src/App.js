@@ -9,7 +9,7 @@ import { LoginPg } from "./pages/loginPg";
 import { Users } from "./backend/users";
 import { UserPage } from "./pages/userPg";
 export default function App() {
-  const { GetPost, SetPost , userStored ,userArrayStored   ,  isLoggedIn , setIsLoggedIn} = useContext(MediaContext);
+  const { GetPost, SetPost , userStored ,userArrayStored   ,  isLoggedIn , setIsLoggedIn , FollowHandler} = useContext(MediaContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [getText , setText] = useState("")
   const navigate = useNavigate()
@@ -78,14 +78,14 @@ const LogOutHandler =()=>{
         </div>
       )}
         
-        <div style={{display:window.innerWidth > 450 ? "block" :"none"}}>
+        <div style={{display:window.innerWidth > 450 ? "block" :"none" , padding:"1rem"}}>
           <p>Suggested users</p>
           {
-userArrayStored.map((e)=><span onClick={()=>navigate(`/user/${e.username}`)} style={{display: userStored.username === e.username  ? "none" :"flex"}} className="userSp"><div className="circleDv">
+userArrayStored.map((e)=><span  style={{display: userStored.username === e.username  ? "none" :"flex"}} className="userSp followSp"><div onClick={()=>navigate(`/user/${e.username}`)} className="circleDv">
           <img src={e.profileImg}></img>
         </div>
-        <p>{e.username}</p>
-        <button className="follow">Follow</button>
+        <p style={{padding:"0.5rem" }}>{e.username}</p>
+        <button className="follow" onClick={()=>FollowHandler(e)}>{userStored.followers.find((u)=>u.username === e.username) ? "unfollow" :"Follow"}</button>
         </span>)
           }
         </div>

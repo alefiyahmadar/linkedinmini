@@ -49,6 +49,7 @@ export const ContextProvider = ({ children }) => {
 
   const [BookMark , setBookmark] = useState([])
   const [isBookMark , setIsBookmark] = useState(false)
+  const [followers , setFollowers] = useState([])
 
   
   
@@ -88,19 +89,45 @@ const BookMarkHandler = (post) => {
    localStorage.setItem("user", JSON.stringify(updatedUser));
    localStorage.setItem("usersArray", JSON.stringify(UpdateUsersArr));
 
-
+console.log(updatedBookmarks)
    return updatedBookmarks
 
  })
 
 
   };
-console.log(usersArray)
- console.log(BookMark)
+const FollowHandler =(user)=>{
+console.log(user)
+
+setFollowers((prevArr)=>{
+
+  
+
+const isFollowed = prevArr.some((u)=>u.username === user.username)
+
+let updatedFollowers;
+if(isFollowed){
+
+ updatedFollowers = prevArr.filter((e)=>e.username !== user.username)
+}else{
+updatedFollowers = [...prevArr , user]
 
 
-    
-console.log(userStored)
+
+}
+const updatedUser = {...userStored, followers:updatedFollowers}
+  const UpdateUsersArr =  userArrayStored.map((e)=>e.username === userStored.username ? {...e, followers:updatedFollowers} : e)
+   localStorage.setItem("user", JSON.stringify(updatedUser));
+   localStorage.setItem("usersArray", JSON.stringify(UpdateUsersArr));
+
+
+console.log(updatedFollowers)
+return updatedFollowers
+
+
+})
+
+}
 
 
 
@@ -108,7 +135,7 @@ console.log(userStored)
 
 
   return (
-    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored  , isLoggedIn, setIsLoggedIn , BookMark , setBookmark , BookMarkHandler , isBookMark , setIsBookmark }}>
+    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored  , isLoggedIn, setIsLoggedIn , BookMark , setBookmark , BookMarkHandler , isBookMark , setIsBookmark, FollowHandler }}>
       {children}
     </MediaContext.Provider>
   );
