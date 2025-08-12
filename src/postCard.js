@@ -5,10 +5,10 @@ import { useNavigate } from "react-router";
 
 export const PostCard =(e)=>{
 
-const {userArrayStored , BookMark , setBookmark , BookMarkHandler , userStored} = useContext(MediaContext)
+const {userArrayStored , BookMark , setBookmark , BookMarkHandler , userStored , LikeHandler} = useContext(MediaContext)
 
 const navigate = useNavigate()
-
+console.log(e.likes.likedBy)
 
 
 
@@ -32,7 +32,10 @@ const navigate = useNavigate()
                 <h2>{e.text}</h2>
 
                 <span className="postAddon">
-                <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/737373/like.png" alt="like"/>
+                
+              
+                <img  onClick={()=>LikeHandler(e)} width="30" height="30" src={e.likes.likedBy.includes(userStored.username)?"https://img.icons8.com/ios-filled/30/FA5252/like--v1.png": "https://img.icons8.com/ios-filled/30/737373/like.png"} alt="like"/>
+              
 
                 <img style={{display:userStored.bookMark.find((u)=>u.id === e.id) ? "none" :"inline"}} onClick={()=>BookMarkHandler(e)} width="30" height="30" src="https://img.icons8.com/material-outlined/24/1A1A1A/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
 
