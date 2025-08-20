@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 export const PostCard =(e)=>{
 
-const {userArrayStored , BookMark , setBookmark , BookMarkHandler , userStored , LikeHandler} = useContext(MediaContext)
+const {userArrayStored , BookMark , setBookmark , BookMarkHandler , userStored , LikeHandler , DeleteHandler} = useContext(MediaContext)
 
 const navigate = useNavigate()
 console.log(e.likes.likedBy)
@@ -18,15 +18,18 @@ console.log(e.likes.likedBy)
             return(
               <div className="postDiv" key={e.id}>
     
-                <span onClick={()=>navigate(`/user/${e.username}`)} className="userSp" >
+                <span  className="userSp" >
     
     
-              <div className="circleDv">
+              <div onClick={()=>navigate(`/user/${e.username}`)} className="circleDv">
               <img src={getImg.profileImg}></img>
             </div>
             
-            <p>{e.username}</p>
+            <p onClick={()=>navigate(`/user/${e.username}`)}>{e.username}</p>
+             <img onClick={()=>DeleteHandler(e)} style={{display:e.username === userStored.username  ? "flex" :"none" }} className="deleteBtn" width="20" height="20" src="https://img.icons8.com/material-rounded/30/filled-trash.png" alt="filled-trash"/>
+           
             </span>
+            
             
                 
                 <h2>{e.text}</h2>

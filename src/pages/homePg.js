@@ -16,7 +16,7 @@ export const HomePg = () => {
     
       <div>
           
-      {GetPost.map((e) => (<PostCard {...e}/>)
+      {GetPost.slice(0).reverse().map((e) => (<PostCard {...e}/>)
         
 )}
       </div>

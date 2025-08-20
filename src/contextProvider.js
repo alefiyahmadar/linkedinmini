@@ -163,6 +163,23 @@ const LikeHandler = (post) => {
   });
 };
 
+const DeleteHandler =(post)=>{
+
+console.log(post)
+
+ SetPost((prevArr)=>{
+
+  const updatedArr = prevArr.filter((e)=>e.id !== post.id)
+  console.log(updatedArr)
+  localStorage.setItem("postArray" , JSON.stringify(updatedArr))
+  return updatedArr
+ })
+
+
+
+localStorage.setItem("postArray" , JSON.stringify(GetPost))
+}
+
 
 
 
@@ -171,7 +188,7 @@ const LikeHandler = (post) => {
 
 
   return (
-    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored  , isLoggedIn, setIsLoggedIn , BookMark , setBookmark , BookMarkHandler , isBookMark , setIsBookmark, FollowHandler , LikeHandler }}>
+    <MediaContext.Provider value={{ GetPost, SetPost  , usersArray , setUsersArray , NewUser , setNewUser ,defaultUser,setDefaultUser , userStored ,userArrayStored  , isLoggedIn, setIsLoggedIn , BookMark , setBookmark , BookMarkHandler , isBookMark , setIsBookmark, FollowHandler , LikeHandler , DeleteHandler }}>
       {children}
     </MediaContext.Provider>
   );
